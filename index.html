@@ -326,11 +326,27 @@
   </div>
 
   <script>
-    // Add staggered animations for link buttons
     document.addEventListener('DOMContentLoaded', () => {
+      // Check if the user has visited before.
+      // If so, remove the introductory guide; otherwise, set a flag.
+      if (localStorage.getItem('visited')) {
+        const introGuide = document.getElementById('introGuide');
+        if (introGuide) {
+          introGuide.remove();
+        }
+      } else {
+        localStorage.setItem('visited', 'true');
+      }
+
+      // Add staggered animations for link buttons
       const buttons = document.querySelectorAll('.link-button');
       buttons.forEach((btn, index) => {
         btn.style.animationDelay = `${index * 0.3 + 2}s`;
+      });
+
+      // Animate guide steps with staggered delays
+      document.querySelectorAll('.guide-step').forEach((step, index) => {
+        step.style.animationDelay = `${index * 0.3}s`;
       });
     });
 
@@ -349,11 +365,6 @@
         document.getElementById('introGuide').remove();
       }, 500);
     }
-
-    // Animate guide steps with staggered delays
-    document.querySelectorAll('.guide-step').forEach((step, index) => {
-      step.style.animationDelay = `${index * 0.3}s`;
-    });
   </script>
   <script>
     // Initial celebration confetti
