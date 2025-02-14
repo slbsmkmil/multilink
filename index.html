@@ -395,13 +395,7 @@
       } else {
         localStorage.setItem('visited', 'true');
       }
-
-      // Add staggered animations for link buttons
-      const buttons = document.querySelectorAll('.link-button');
-      buttons.forEach((btn, index) => {
-        btn.style.animationDelay = `${index * 0.3 + 2}s`;
-      });
-
+      
       // Animate guide steps with staggered delays
       document.querySelectorAll('.guide-step').forEach((step, index) => {
         step.style.animationDelay = `${index * 0.3}s`;
